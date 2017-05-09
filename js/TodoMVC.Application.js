@@ -6,9 +6,9 @@ var TodoMVC = TodoMVC || {};
 	'use strict';
 
 	var TodoApp = Mn.Application.extend({
-		setRootLayout: function () {
-			this.root = new TodoMVC.RootLayout();
-		}
+            setRootLayout: function () {
+                this.root = new TodoMVC.RootLayout();
+            }
 	});
 
 	// The Application Object is responsible for kicking off
@@ -21,7 +21,7 @@ var TodoMVC = TodoMVC || {};
 	TodoMVC.App = new TodoApp();
 
 	TodoMVC.App.on('before:start', function () {
-		TodoMVC.App.setRootLayout();
+            TodoMVC.App.setRootLayout();
 	});
 
 })();

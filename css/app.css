@@ -1,4 +1,25 @@
-#todoapp.filter-active #todo-list .completed,
-#todoapp.filter-completed #todo-list .active {
-	display: none;
+#todo-list li {
+    list-style: none;
+    display: block;
+    float: left;
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+}
+
+#todo-list li img {
+    display: block;
+}
+
+#todo-list li label {
+    display: block;
+    width: 100%;
+    border: 1px #999 solid;
+    text-align: center; 
+}
+
+#todo-list li label {
+    display: block;
+    position: relative;
+    top: 100px;
 }

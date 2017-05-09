@@ -9,36 +9,32 @@ var TodoMVC = TodoMVC || {};
 	// ----------
 	TodoMVC.Todo = Backbone.Model.extend({
 		defaults: {
-			title: '',
-			completed: false,
-			created: 0
+                    title: '',
+                    images: [],
+                    randomImage: '',
+                    visible: false
 		},
 
 		initialize: function () {
-			if (this.isNew()) {
-				this.set('created', Date.now());
-			}
+//                    if (this.isNew()) {
+//                        this.set('created', Date.now());
+//                    }
 		},
+                
+                isVisible: function() {
+                    console.log('isVisible');
+                    console.log(this.get('visible'));
+                    return this.get('visible');
+                }
+                
+//		toggle: function () {
+//                    return this.set('completed', !this.isCompleted());
+//		},
+//
+//		isCompleted: function () {
+//                    return this.get('completed');
+//		}
 
-		toggle: function () {
-			return this.set('completed', !this.isCompleted());
-		},
-
-		isCompleted: function () {
-			return this.get('completed');
-		},
-
-		matchesFilter: function (filter) {
-			if (filter === 'all') {
-				return true;
-			}
-
-			if (filter === 'active') {
-				return !this.isCompleted();
-			}
-
-			return this.isCompleted();
-		}
 	});
 
 	// Todo Collection
@@ -46,20 +42,39 @@ var TodoMVC = TodoMVC || {};
 	TodoMVC.TodoList = Backbone.Collection.extend({
 		model: TodoMVC.Todo,
 
-		localStorage: new Backbone.LocalStorage('todos-backbone-marionette'),
-
-		comparator: 'created',
-
-		getCompleted: function () {
-			return this.filter(this._isCompleted);
-		},
-
-		getActive: function () {
-			return this.reject(this._isCompleted);
-		},
-
-		_isCompleted: function (todo) {
-			return todo.isCompleted();
-		}
+                url: 'data/carousel.json',
+		
+                parse: function(response) {
+                    var json = [];
+                    
+                    try {
+                        json = JSON.parse(response);
+                        
+                        for (var i=0, l=json.length; i<l; i++) {
+                            var images = json[i].images;
+                            var randomIndex = Math.floor(Math.random() * Math.floor(images.length));
+                            json[i].randomImage = images[randomIndex];
+                            json[i].visible = (i < 4);
+                        }
+                    } catch (e) {
+                        console.log(e);
+                    }
+                    console.log(json);
+                    return json;
+                }
+                
+		// comparator: 'created',
+//
+//		getCompleted: function () {
+//                    return this.filter(this._isCompleted);
+//		},
+//
+//		getActive: function () {
+//                    return this.reject(this._isCompleted);
+//		},
+//
+//		_isCompleted: function (todo) {
+//                    return todo.isCompleted();
+//		}
 	});
 })();
