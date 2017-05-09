@@ -1,6 +1,6 @@
 /*global TodoMVC:true, Backbone, $ */
 
-var TodoMVC = TodoMVC || {};
+var Carousel = Carousel || {};
 
 (function () {
 	'use strict';
@@ -10,7 +10,7 @@ var TodoMVC = TodoMVC || {};
 	//
 	// Handles a single dynamic route to show
 	// the active vs complete todo items
-	TodoMVC.Router = Mn.AppRouter.extend({
+	Carousel.Router = Mn.AppRouter.extend({
             appRoutes: {
                 // '*filter': 'filterItems'
             }
@@ -21,10 +21,10 @@ var TodoMVC = TodoMVC || {};
 	//
 	// Control the workflow and logic that exists at the application
 	// level, above the implementation detail of views and models
-	TodoMVC.Controller = Mn.Object.extend({
+	Carousel.Controller = Mn.Object.extend({
 
             initialize: function () {
-                this.todoList = new TodoMVC.TodoList();
+                this.todoList = new Carousel.TodoList();
             },
 
             // Start the app by showing the appropriate views
@@ -48,7 +48,7 @@ var TodoMVC = TodoMVC || {};
             },
 
             showTodoList: function (todoList) {
-                TodoMVC.App.root.showChildView('main', new TodoMVC.ListView({
+                Carousel.App.root.showChildView('main', new Carousel.ListView({
                     collection: todoList
                 }));
             }

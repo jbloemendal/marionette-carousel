@@ -1,6 +1,6 @@
 /*global TodoMVC: true, Backbone */
 
-var TodoMVC = TodoMVC || {};
+var Carousel = Carousel || {};
 
 (function () {
     'use strict';
@@ -10,7 +10,7 @@ var TodoMVC = TodoMVC || {};
     //
     // Display an individual todo item, and respond to changes
     // that are made to the item, including marking completed.
-    TodoMVC.TodoView = Mn.View.extend({
+    Carousel.TodoView = Mn.View.extend({
 
         tagName: 'li',
 
@@ -33,12 +33,12 @@ var TodoMVC = TodoMVC || {};
     //
     // Controls the rendering of the list of items, including the
     // filtering of items for display.
-    TodoMVC.ListViewBody = Mn.CollectionView.extend({
+    Carousel.ListViewBody = Mn.CollectionView.extend({
         tagName: 'ul',
 
         id: 'todo-list',
 
-        childView: TodoMVC.TodoView,
+        childView: Carousel.TodoView,
         
         index: 0,
         size: 4,
@@ -73,7 +73,7 @@ var TodoMVC = TodoMVC || {};
     // --------------
     //
     // Manages List View
-    TodoMVC.ListView = Mn.View.extend({
+    Carousel.ListView = Mn.View.extend({
 
         template: '#template-todoListView',
 
@@ -107,7 +107,7 @@ var TodoMVC = TodoMVC || {};
         },
 
         onRender: function () {
-            this.listViewBody = new TodoMVC.ListViewBody({
+            this.listViewBody = new Carousel.ListViewBody({
                 collection: this.collection
             });
             this.showChildView('listBody', this.listViewBody);

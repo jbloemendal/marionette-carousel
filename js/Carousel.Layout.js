@@ -1,11 +1,11 @@
 /*global TodoMVC:true, Backbone */
 
-var TodoMVC = TodoMVC || {};
+var Carousel = Carousel || {};
 
 (function () {
 	'use strict';
 
-	TodoMVC.RootLayout = Mn.View.extend({
+	Carousel.RootLayout = Mn.View.extend({
 
             el: '#todoapp',
 

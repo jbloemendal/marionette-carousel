@@ -1,13 +1,13 @@
 /*global Backbone, TodoMVC:true */
 
-var TodoMVC = TodoMVC || {};
+var Carousel = Carousel || {};
 
 (function () {
 	'use strict';
 
-	var TodoApp = Mn.Application.extend({
+	var CarouselApp = Mn.Application.extend({
             setRootLayout: function () {
-                this.root = new TodoMVC.RootLayout();
+                this.root = new Carousel.RootLayout();
             }
 	});
 
@@ -18,10 +18,10 @@ var TodoMVC = TodoMVC || {};
 	// before it is started.  Other system components can listen
 	// for the application start event, and perform initialization
 	// on that event
-	TodoMVC.App = new TodoApp();
+	Carousel.App = new CarouselApp();
 
-	TodoMVC.App.on('before:start', function () {
-            TodoMVC.App.setRootLayout();
+	Carousel.App.on('before:start', function () {
+            Carousel.App.setRootLayout();
 	});
 
 })();

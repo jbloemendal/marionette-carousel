@@ -1,13 +1,13 @@
 /*global Backbone, TodoMVC:true */
 
-var TodoMVC = TodoMVC || {};
+var Carousel = Carousel || {};
 
 (function () {
 	'use strict';
 
 	// Todo Model
 	// ----------
-	TodoMVC.Todo = Backbone.Model.extend({
+	Carousel.Todo = Backbone.Model.extend({
             defaults: {
                 title: '',
                 images: [],
@@ -27,8 +27,8 @@ var TodoMVC = TodoMVC || {};
 
 	// Todo Collection
 	// ---------------
-	TodoMVC.TodoList = Backbone.Collection.extend({
-            model: TodoMVC.Todo,
+	Carousel.TodoList = Backbone.Collection.extend({
+            model: Carousel.Todo,
 
             url: 'data/carousel.json',
 
