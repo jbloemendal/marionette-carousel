@@ -5,8 +5,6 @@ var TodoMVC = TodoMVC || {};
 (function () {
 	'use strict';
 
-//	var filterChannel = Backbone.Radio.channel('filter');
-
 	// TodoList Router
 	// ---------------
 	//
@@ -55,10 +53,5 @@ var TodoMVC = TodoMVC || {};
                 }));
             }
 
-//            // Set the filter to show complete or all items
-//            filterItems: function (filter) {
-//                var newFilter = filter && filter.trim() || 'all';
-//                filterChannel.request('filterState').set('filter', newFilter);
-//            }
 	});
 })();

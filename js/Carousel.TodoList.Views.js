@@ -5,8 +5,6 @@ var TodoMVC = TodoMVC || {};
 (function () {
     'use strict';
 
-    var filterChannel = Backbone.Radio.channel('filter');
-
     // Todo List Item View
     // -------------------
     //
@@ -97,17 +95,14 @@ var TodoMVC = TodoMVC || {};
         },
 
         rotateLeft: function() {
-            console.log('rotateLeft');
             this.listViewBody.left();
         },
         
         rotateRight: function() {
-            console.log('rotateRight');
             this.listViewBody.right();
         },
 
         initialize: function () {
-            // this.listenTo(filterChannel.request('filterState'), 'change:filter', this.render, this);
             console.log('initialize');
         },
 
