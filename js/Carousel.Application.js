@@ -1,5 +1,3 @@
-/*global Backbone, TodoMVC:true */
-
 var Carousel = Carousel || {};
 
 (function () {

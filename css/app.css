@@ -1,25 +1,55 @@
-#todo-list li {
+body {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+#carousel {
+    padding-left: 50px;
+}
+
+#carousel a {
+    display: block;
+    float: left;
+    position: relative;
+    top: 80px;
+    color: white;
+    text-decoration: none;
+    z-index: 1;
+    font-size: 40px;
+    opacity: 0.9;
+    filter: alpha(opacity=90);
+}
+
+#rotateLeft {
+    left: 22px;
+}
+
+#rotateRight {
+    left: -22px; 
+}
+
+#carousel-list {
+    position: relative;
+    padding: 0px;
+}
+
+#carousel-list li {
     list-style: none;
     display: block;
     float: left;
-    width: 150px;
-    height: 150px;
-    border: 1px solid black;
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
 }
 
-#todo-list li img {
+#carousel-list li img {
     display: block;
 }
 
-#todo-list li label {
+#carousel-list li label {
     display: block;
     width: 100%;
-    border: 1px #999 solid;
     text-align: center; 
-}
-
-#todo-list li label {
-    display: block;
     position: relative;
-    top: 100px;
+    top: -20px;
+    color: white;
 }

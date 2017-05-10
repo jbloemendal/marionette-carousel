@@ -1,20 +1,14 @@
-/*global TodoMVC: true, Backbone */
-
 var Carousel = Carousel || {};
 
 (function () {
     'use strict';
 
-    // Todo List Item View
-    // -------------------
-    //
-    // Display an individual todo item, and respond to changes
-    // that are made to the item, including marking completed.
-    Carousel.TodoView = Mn.View.extend({
+
+    Carousel.ItemView = Mn.View.extend({
 
         tagName: 'li',
 
-        template: '#template-todoItemView',
+        template: '#template-carouselItemView',
 
         onEditFocusout: function () {
             var todoText = this.ui.edit.val().trim();
@@ -28,17 +22,13 @@ var Carousel = Carousel || {};
         
     });
 
-    // Item List View Body
-    // --------------
-    //
-    // Controls the rendering of the list of items, including the
-    // filtering of items for display.
+    
     Carousel.ListViewBody = Mn.CollectionView.extend({
         tagName: 'ul',
 
-        id: 'todo-list',
+        id: 'carousel-list',
 
-        childView: Carousel.TodoView,
+        childView: Carousel.ItemView,
         
         index: 0,
         size: 4,
@@ -48,18 +38,43 @@ var Carousel = Carousel || {};
         },
         
         left: function() {
+            var self = this;
             if (this.index > 0) {
-                console.log('left');
                 this.index--;
-                this.render();
+                
+                var fade = new $.Deferred();
+                var move = new $.Deferred();
+                
+                $('#carousel-list li:last').fadeOut('slow', function() {
+                    fade.resolve();
+                });
+                $('#carousel-list li').animate({left: "150px"}, 500, 'swing', function() {
+                    move.resolve();   
+                });
+                $.when(fade, move).then(function() {
+                    self.render();
+                });
             }
         },
         
         right: function() {
+            var self = this;
             if (this.index + this.size < this.collection.length) {
-                console.log('right');
                 this.index++;
-                this.render();
+                
+                var fade = new $.Deferred();
+                var move = new $.Deferred();
+                
+                
+                $('#carousel-list li:first').fadeOut('slow', function() {
+                   fade.resolve();
+                });
+                $('#carousel-list li').animate({left: "-150px"}, 500, 'swing', function() {
+                    move.resolve();    
+                });
+                $.when(fade, move).then(function() {
+                   self.render(); 
+                });
             }
         },
         
@@ -69,13 +84,10 @@ var Carousel = Carousel || {};
 
     });
 
-    // Item List View
-    // --------------
-    //
-    // Manages List View
+   
     Carousel.ListView = Mn.View.extend({
 
-        template: '#template-todoListView',
+        template: '#template-carouselListView',
 
         regions: {
             listBody: {
@@ -91,7 +103,8 @@ var Carousel = Carousel || {};
 
         events: {
             'click @ui.left': 'rotateLeft',
-            'click @ui.right': 'rotateRight'
+            'click @ui.right': 'rotateRight',
+            'keydown @ui.carousel': 'onEditKeypress'
         },
 
         rotateLeft: function() {
@@ -101,9 +114,24 @@ var Carousel = Carousel || {};
         rotateRight: function() {
             this.listViewBody.right();
         },
+        
+        onKeyup: function (e) {
+            var LEFT_KEY = 37;
+            var RIGHT_KEY = 39;
+
+            if (e.which === LEFT_KEY) {
+                this.listViewBody.left();
+            } else if (e.which === RIGHT_KEY) {
+                this.listViewBody.right();
+            }
+        },
 
         initialize: function () {
             console.log('initialize');
+            var self = this;
+            $(document).on('keyup', function() {
+                self.onKeyup.apply(self, arguments);
+            });
         },
 
         onRender: function () {
@@ -112,5 +140,6 @@ var Carousel = Carousel || {};
             });
             this.showChildView('listBody', this.listViewBody);
         }
+        
     });
 })();

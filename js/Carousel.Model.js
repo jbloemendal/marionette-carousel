@@ -1,13 +1,10 @@
-/*global Backbone, TodoMVC:true */
-
 var Carousel = Carousel || {};
 
 (function () {
 	'use strict';
 
-	// Todo Model
-	// ----------
-	Carousel.Todo = Backbone.Model.extend({
+	
+	Carousel.Item = Backbone.Model.extend({
             defaults: {
                 title: '',
                 images: [],
@@ -25,10 +22,9 @@ var Carousel = Carousel || {};
 
 	});
 
-	// Todo Collection
-	// ---------------
-	Carousel.TodoList = Backbone.Collection.extend({
-            model: Carousel.Todo,
+	
+	Carousel.Collection = Backbone.Collection.extend({
+            model: Carousel.Item,
 
             url: 'data/carousel.json',
 
@@ -45,9 +41,10 @@ var Carousel = Carousel || {};
                         json[i].visible = (i < 4);
                     }
                 } catch (e) {
-                    console.log(e);
+                    console.log("Error parsing carousel data.");
+                    console.error(e);
                 }
-                console.log(json);
+                
                 return json;
             }
 

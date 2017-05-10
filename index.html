@@ -1,43 +1,49 @@
 <!doctype html>
 <html lang="en" data-framework="marionettejs">
-	<head>
-		<meta charset="utf-8">
-		<title>Marionette • Carousel</title>
-		<link rel="stylesheet" href="css/app.css">
-	</head>
-	<body>
-		<section id="todoapp">
-                    <section id="main"></section>	
-		</section>
+    <head>
+        <meta charset="utf-8">
+        <title>Marionette • Carousel</title>
+        <link rel="stylesheet" href="css/app.css">
+    </head>
+    <body id="body">
+        <section id="carouselApp">
+            <h1>Marionette Carousel</h1>
+            <p>
+                Rotate left and right clicking the navigation buttons or use your keyboard left and right arrows.
+            </p>
+            <section id="main"></section>	
+        </section>
 
-		<script type="text/html" id="template-todoItemView">
-                    
-                    <img src="<%- randomImage %>" />
-                    <label><%- title %></label>
-                    
-		</script>
-                
-		<script type="text/html" id="template-todoListView">
-                    <a id="rotateLeft" href="#rotateLeft">&lt;</a>
-                    <ul></ul>
-                    <a id="rotateRight" href="#rotateRight">&gt;</a>
-		</script>
-                
-		<!-- vendor libraries -->
-		<script src="node_modules/todomvc-common/base.js"></script>
-		<script src="node_modules/jquery/dist/jquery.js"></script>
-		<script src="node_modules/underscore/underscore.js"></script>
-		<script src="node_modules/backbone/backbone.js"></script>
-		<script src="node_modules/backbone.localstorage/backbone.localStorage.js"></script>
-		<script src="node_modules/backbone.radio/build/backbone.radio.js"></script>
-		<script src="node_modules/backbone.marionette/lib/backbone.marionette.js"></script>
-		
-                <!-- application -->
-		<script src="js/Carousel.Application.js"></script>
-		<script src="js/Carousel.Todos.js"></script>
-		<script src="js/Carousel.Layout.js"></script>
-		<script src="js/Carousel.TodoList.Views.js"></script>
-		<script src="js/Carousel.Router.js"></script>
-		<script src="js/Carousel.js"></script>
-	</body>
+        <script type="text/html" id="template-carouselItemView">
+            
+            <img src="<%- randomImage %>" />
+            <label><%- title %></label>
+
+        </script>
+
+        <script type="text/html" id="template-carouselListView">
+            <div id="carousel">
+                <a id="rotateLeft" href="#rotateLeft">&lt;</a>
+                <ul></ul>
+                <a id="rotateRight" href="#rotateRight">&gt;</a>
+            </div>
+        </script>
+
+        <!-- vendor libraries -->
+        <script src="node_modules/todomvc-common/base.js"></script>
+        <script src="node_modules/jquery/dist/jquery.js"></script>
+        <script src="node_modules/underscore/underscore.js"></script>
+        <script src="node_modules/backbone/backbone.js"></script>
+        <script src="node_modules/backbone.localstorage/backbone.localStorage.js"></script>
+        <script src="node_modules/backbone.radio/build/backbone.radio.js"></script>
+        <script src="node_modules/backbone.marionette/lib/backbone.marionette.js"></script>
+
+        <!-- application -->
+        <script src="js/Carousel.Application.js"></script>
+        <script src="js/Carousel.Model.js"></script>
+        <script src="js/Carousel.Layout.js"></script>
+        <script src="js/Carousel.Views.js"></script>
+        <script src="js/Carousel.Router.js"></script>
+        <script src="js/Carousel.js"></script>
+    </body>
 </html>

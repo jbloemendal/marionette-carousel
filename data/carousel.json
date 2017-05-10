@@ -1,26 +1,26 @@
 [
     {
         "title": "First Block",
-        "images": ["url1", "url2", "url3"]
+        "images": ["images/thumbnails/img1.jpeg", "images/thumbnails/img2.jpeg"]
     },
     {
         "title": "Second Block",
-        "images": ["url7", "url8"]
+        "images": ["images/thumbnails/img3.jpeg", "images/thumbnails/img4.jpeg"]
     },
     {
         "title": "Third Block",
-        "images": ["url9", "url10"]
+        "images": ["images/thumbnails/img5.jpeg", "images/thumbnails/img6.jpeg"]
     },
     {
         "title": "Fourth Block",
-        "images": ["url11", "url15"]
+        "images": ["images/thumbnails/img7.jpeg", "images/thumbnails/img8.png"]
     },
     {
         "title": "Fith Block",
-        "images": ["url20", "url21"]
+        "images": ["images/thumbnails/img9.jpeg", "images/thumbnails/img10.jpeg"]
     },
     {
         "title": "Sixed Block",
-        "images": ["url30", "url31"]
+        "images": ["images/thumbnails/img11.jpeg", "images/thumbnails/img12.jpeg"]
     }
 ]

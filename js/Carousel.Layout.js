@@ -1,5 +1,3 @@
-/*global TodoMVC:true, Backbone */
-
 var Carousel = Carousel || {};
 
 (function () {
@@ -7,7 +5,7 @@ var Carousel = Carousel || {};
 
 	Carousel.RootLayout = Mn.View.extend({
 
-            el: '#todoapp',
+            el: '#carouselApp',
 
             regions: {
                 main: '#main'
